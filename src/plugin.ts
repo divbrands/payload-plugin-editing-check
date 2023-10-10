@@ -3,10 +3,9 @@ import type { Config } from 'payload/config'
 import { onInitExtension } from './onInitExtension'
 import type { PluginTypes } from './types'
 import { extendWebpackConfig } from './webpack'
-import AfterDashboard from './components/AfterDashboard'
-import newCollection from './newCollection'
+import { EditingCheck } from './components/EditingCheck/editingCheck'
 
-export const samplePlugin =
+export const editingCheckPlugin =
   (pluginOptions: PluginTypes) =>
   (incomingConfig: Config): Config => {
     let config = { ...incomingConfig }
@@ -22,14 +21,11 @@ export const samplePlugin =
 
       // Add additional admin config here
 
-      components: {
-        ...(config.admin?.components || {}),
-        // Add additional admin components here
-        afterDashboard: [
-          ...(config.admin?.components?.afterDashboard || []),
-          AfterDashboard,
-        ],
-      },
+      // components: {
+      //   ...(config.admin?.components || {}),
+      //   // Add additional admin components here
+      //   editingCheck: [...(config.admin?.components?.editingCheck || []), EditingCheck],
+      // },
     }
 
     // If the plugin is disabled, return the config without modifying it
@@ -39,33 +35,24 @@ export const samplePlugin =
     }
 
     config.collections = [
-      ...(config.collections || []),
-      // Add additional collections here
-      newCollection, // delete this line to remove the example collection
+      ...(config.collections || []).map(collection => ({
+        ...collection,
+        fields: [
+          ...collection.fields,
+          {
+            name: 'editingCheck',
+            type: 'ui' as const,
+            label: 'PartyKit Editing Check',
+            admin: {
+              components: {
+                Field: EditingCheck,
+                // TODO: Possibly add Cell with a colored circle indicating if someone is editing or not (e.g. green and red)
+              },
+            },
+          },
+        ],
+      })),
     ]
-
-    config.endpoints = [
-      ...(config.endpoints || []),
-      {
-        path: '/custom-endpoint',
-        method: 'get',
-        root: true,
-        handler: (req, res): void => {
-          res.json({ message: 'Here is a custom endpoint' });
-        },
-      },
-      // Add additional endpoints here
-    ]
-
-    config.globals = [
-      ...(config.globals || []),
-      // Add additional globals here
-    ]
-
-    config.hooks = {
-      ...(config.hooks || {}),
-      // Add additional hooks here
-    }
 
     config.onInit = async payload => {
       if (incomingConfig.onInit) await incomingConfig.onInit(payload)

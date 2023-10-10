@@ -4,9 +4,9 @@ export const seed = async (payload: Payload): Promise<void> => {
   payload.logger.info('Seeding data...')
 
   await payload.create({
-    collection: 'new-collection',
+    collection: 'examples',
     data: {
-      title: 'Seeded title',
+      someField: 'Seeded title',
     },
   })
 

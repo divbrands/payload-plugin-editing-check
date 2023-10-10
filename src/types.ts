@@ -6,6 +6,6 @@ export interface PluginTypes {
   enabled?: boolean
 }
 
-export interface NewCollectionTypes {
-  title: string
+export interface ExamplesCollectionTypes {
+  someField: string
 }

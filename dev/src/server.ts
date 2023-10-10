@@ -22,7 +22,6 @@ export const start = async (args: { local: boolean } = { local: false }): Promis
     express: app,
   })
 
-
   if (process.env.PAYLOAD_SEED === 'true') {
     await seed(payload)
   }

@@ -2,11 +2,11 @@ import type { Server } from 'http'
 import mongoose from 'mongoose'
 import payload from 'payload'
 import { start } from './src/server'
-import { NewCollectionTypes } from '../src/types'
+import { ExamplesCollectionTypes } from '../src/types'
 
 describe('Plugin tests', () => {
   let server: Server
-  let newCollection: NewCollectionTypes[]
+  let examplesCollection: ExamplesCollectionTypes[]
 
   beforeAll(async () => {
     server = await start({ local: true })
@@ -19,16 +19,14 @@ describe('Plugin tests', () => {
   })
 
   // Add tests to ensure that the plugin works as expected
-
-  // Example test to check for seeded data
-  it('seeds data accordingly', async () => {
-    const newCollectionQuery = await payload.find({
-      collection: 'new-collection',
+  it('adds editing check field accordingly', async () => {
+    const examplesCollectionQuery = await payload.find({
+      collection: 'examples',
       sort: 'createdAt',
     })
 
-    newCollection = newCollectionQuery.docs
+    examplesCollection = examplesCollectionQuery.docs
 
-    expect(newCollectionQuery.totalDocs).toEqual(1)
+    expect(examplesCollectionQuery.totalDocs).toEqual(1)
   })
 })
