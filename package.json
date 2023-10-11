@@ -1,6 +1,6 @@
 {
-  "name": "@payloadcms/payload-plugin-editing-check",
-  "version": "0.0.1-rc1",
+  "name": "@divbrands/payload-plugin-editing-check",
+  "version": "0.0.1-rc2",
   "homepage:": "https://payloadcms.com",
   "repository": "git@github.com:divbrands/payload-plugin-editing-check.git",
   "description": "Payload plugin for integration with PartyKit",
@@ -12,7 +12,8 @@
     "plugin",
     "typescript",
     "react",
-    "partykit"
+    "partykit",
+    "editingCheck"
   ],
   "scripts": {
     "build": "tsc",
@@ -20,7 +21,8 @@
     "lint": "eslint src",
     "lint:fix": "eslint --fix --ext .ts,.tsx src",
     "clean": "rimraf dist && rimraf dev/yarn.lock",
-    "prepublishOnly": "yarn clean && yarn build && cd dev && yarn test"
+    "prepublishOnly": "yarn clean && yarn build && cd dev && yarn test",
+    "publish": "npm publish --access public"
   },
   "author": "dmvvilela@gmail.com",
   "license": "MIT",

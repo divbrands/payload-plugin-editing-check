@@ -4,6 +4,7 @@ export interface PluginTypes {
    * @default false
    */
   enabled?: boolean
+  except?: string[]
 }
 
 export interface ExamplesCollectionTypes {

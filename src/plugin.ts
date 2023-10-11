@@ -26,23 +26,24 @@ export const editingCheck =
       return config
     }
 
+    const editingCheckField = {
+      name: 'editingCheck',
+      type: 'ui' as const,
+      label: 'Editing Check',
+      admin: {
+        components: {
+          Field: EditingCheck,
+          Cell: () => null,
+        },
+      },
+    }
+
     config.collections = [
       ...(config.collections || []).map(collection => ({
         ...collection,
         fields: [
           ...collection.fields,
-          {
-            name: 'editingCheck',
-            type: 'ui' as const,
-            label: 'Editing Check',
-            admin: {
-              components: {
-                Field: EditingCheck,
-                // TODO: Possibly add Cell with a colored circle indicating if someone is editing or not (e.g. green and red)
-                Cell: () => null,
-              },
-            },
-          },
+          ...(pluginOptions.except?.includes(collection.slug) ? [] : [editingCheckField]),
         ],
       })),
     ]

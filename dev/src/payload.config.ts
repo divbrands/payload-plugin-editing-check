@@ -34,6 +34,7 @@ export default buildConfig({
   plugins: [
     editingCheck({
       enabled: true,
+      except: ['users'],
     }),
   ],
 })
