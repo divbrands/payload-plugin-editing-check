@@ -1,6 +1,6 @@
 {
   "name": "@payloadcms/payload-plugin-editing-check",
-  "version": "0.0.1",
+  "version": "0.0.1-rc1",
   "homepage:": "https://payloadcms.com",
   "repository": "git@github.com:divbrands/payload-plugin-editing-check.git",
   "description": "Payload plugin for integration with PartyKit",

@@ -5,7 +5,7 @@ import type { PluginTypes } from './types'
 import { extendWebpackConfig } from './webpack'
 import { EditingCheck } from './components/EditingCheck/editingCheck'
 
-export const editingCheckPlugin =
+export const editingCheck =
   (pluginOptions: PluginTypes) =>
   (incomingConfig: Config): Config => {
     let config = { ...incomingConfig }

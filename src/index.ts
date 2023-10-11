@@ -1,2 +1,2 @@
-export { editingCheckPlugin } from './plugin'
+export { editingCheck } from './plugin'
 export type { PluginTypes } from './types'

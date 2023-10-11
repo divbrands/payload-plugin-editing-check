@@ -2,7 +2,7 @@ import { buildConfig } from 'payload/config'
 import path from 'path'
 import Users from './collections/Users'
 import Examples from './collections/Examples'
-import { editingCheckPlugin } from '../../src/index'
+import { editingCheck } from '../../src/index'
 
 export default buildConfig({
   serverURL: 'http://localhost:3000',
@@ -32,7 +32,7 @@ export default buildConfig({
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
   plugins: [
-    editingCheckPlugin({
+    editingCheck({
       enabled: true,
     }),
   ],
