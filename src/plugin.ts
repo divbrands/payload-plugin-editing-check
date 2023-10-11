@@ -18,14 +18,6 @@ export const editingCheckPlugin =
       // If you extended the webpack config, add it back in here
       // If you did not extend the webpack config, you can remove this line
       webpack,
-
-      // Add additional admin config here
-
-      // components: {
-      //   ...(config.admin?.components || {}),
-      //   // Add additional admin components here
-      //   editingCheck: [...(config.admin?.components?.editingCheck || []), EditingCheck],
-      // },
     }
 
     // If the plugin is disabled, return the config without modifying it
@@ -42,11 +34,12 @@ export const editingCheckPlugin =
           {
             name: 'editingCheck',
             type: 'ui' as const,
-            label: 'PartyKit Editing Check',
+            label: 'Editing Check',
             admin: {
               components: {
                 Field: EditingCheck,
                 // TODO: Possibly add Cell with a colored circle indicating if someone is editing or not (e.g. green and red)
+                Cell: () => null,
               },
             },
           },

@@ -17,7 +17,7 @@ export const start = async (args: { local: boolean } = { local: false }): Promis
   const { local } = args
   await payload.init({
     local,
-    secret: process.env.PAYLOAD_SECRET || 'here-is-a-secret',
+    secret: process.env.PAYLOAD_SECRET || 'TESTING',
     mongoURL: process.env.MONGODB_URI || 'mongodb://127.0.0.1/plugin-development',
     express: app,
   })

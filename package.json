@@ -42,6 +42,7 @@
     "prettier": "^2.7.1",
     "react": "^18.0.0",
     "typescript": "^4.8.4",
+    "partykit": "0.0.28",
     "partysocket": "^0.0.9",
     "payload": "^1.15.7"
   }

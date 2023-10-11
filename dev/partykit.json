@@ -1,0 +1,5 @@
+{
+  "name": "payload-plugin-editing-check-party",
+  "main": "../src/server/partykit.ts",
+  "compatibilityDate": "2023-10-06"
+}

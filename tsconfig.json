@@ -16,6 +16,7 @@
     "declarationDir": "./dist",
     "skipLibCheck": true,
     "strict": true,
+    "downlevelIteration": true
   },
   "include": [
     "src/**/*",
