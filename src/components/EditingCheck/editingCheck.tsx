@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import PartySocket from 'partysocket'
 import { MinimalTemplate } from 'payload/components/templates'
 import { useDocumentInfo } from 'payload/components/utilities'
+import { useTheme } from 'payload/dist/admin/components/utilities/Theme'
 
 interface CustomButtonProps {
   label: String
@@ -25,6 +26,7 @@ const CustomButton = ({ label, type = 'primary', onClick }: CustomButtonProps) =
 
 export const EditingCheck = () => {
   const { id, slug } = useDocumentInfo()
+  const { theme } = useTheme()
   const [modalOpen, setModalOpen] = useState(false)
   const wasModalOpenedRef = useRef(false)
 
@@ -84,9 +86,12 @@ export const EditingCheck = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        backgroundColor: `${
+          theme === 'light' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(23, 23, 23, 0.9)'
+        }`,
         zIndex: 1000,
-        backdropFilter: 'blur(5px)',
+        backdropFilter: 'blur(4px)',
+        transition: 'opacity 250ms linear',
       }}
     >
       <MinimalTemplate className={`${baseClass}__template`}>
