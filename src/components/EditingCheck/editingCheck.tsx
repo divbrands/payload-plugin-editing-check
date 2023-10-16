@@ -10,6 +10,12 @@ interface CustomButtonProps {
   onClick: () => void
 }
 
+interface CustomFieldProps {
+  custom: {
+    partyUrl: string
+  }
+}
+
 const CustomButton = ({ label, type = 'primary', onClick }: CustomButtonProps) => (
   <button
     type="button"
@@ -24,11 +30,12 @@ const CustomButton = ({ label, type = 'primary', onClick }: CustomButtonProps) =
   </button>
 )
 
-export const EditingCheck = () => {
+export const EditingCheck = ({ custom }: CustomFieldProps) => {
   const { id, slug } = useDocumentInfo()
   const { theme } = useTheme()
   const [modalOpen, setModalOpen] = useState(false)
   const wasModalOpenedRef = useRef(false)
+  const { partyUrl: host } = custom
 
   const room = `${slug}-${id}`
   const baseClass = 'delete-document' // we need the same class for the modal as the exclude button
@@ -39,10 +46,7 @@ export const EditingCheck = () => {
     }
 
     // Connect to server
-    const partySocket = new PartySocket({
-      host: process.env.PAYLOAD_PUBLIC_PARTY_URL || 'localhost://1999',
-      room,
-    })
+    const partySocket = new PartySocket({ host, room })
 
     // When we enter the room, we (and only we) get all the connections
     // Whenever someone leaves the room, everyone get a message with all the connections

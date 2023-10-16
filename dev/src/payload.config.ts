@@ -35,6 +35,7 @@ export default buildConfig({
     editingCheck({
       enabled: true,
       except: ['users'],
+      partyUrl: process.env.PAYLOAD_PUBLIC_PARTY_URL,
     }),
   ],
 })

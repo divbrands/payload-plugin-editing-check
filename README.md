@@ -61,6 +61,7 @@ const config = buildConfig({
     editingCheck({
       enabled: true,
       except: ['users'],
+      partyUrl: process.env.PAYLOAD_PUBLIC_PARTY_URL
     }),
   ],
 });
@@ -69,13 +70,18 @@ export default config;
 ```
 
 #### Options
-- ```enabled```: Boolean
+- `enabled`: Boolean
  
   If you want the plugin enabled or not.
 
 - `except`: string[] | null
 
   You can choose the collections that you don't want the plugin to apply.
+
+- `partyUrl`: string
+
+  The URL provided by deploying Party Kit with `npx partykit deploy`.
+  It has to be public if it comes from `.env` file.
 
 
 ### Enjoy

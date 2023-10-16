@@ -36,6 +36,9 @@ export const editingCheck =
           Cell: () => null,
         },
       },
+      custom: {
+        partyUrl: pluginOptions.partyUrl,
+      },
     }
 
     config.collections = [

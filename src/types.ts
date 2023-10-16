@@ -4,7 +4,18 @@ export interface PluginTypes {
    * @default false
    */
   enabled?: boolean
+
+  /**
+   * Collections to exclude
+   * @default []
+   */
   except?: string[]
+
+  /**
+   * Party Kit URL
+   * Got from from deploying partykit.
+   */
+  partyUrl: string
 }
 
 export interface ExamplesCollectionTypes {
